@@ -16,3 +16,24 @@ const colors = [
 const randomIntegerFromInterval = (min, max) => {
  return Math.floor(Math.random() * (max - min + 1) + min);
 };
+const colorSwitch = {
+  isActive: false,
+  start() {
+    if (this.isActive) {
+      return;
+    }
+    this.isActive = true;
+    this.swichColors = setInterval(() => {
+      const min = 0;
+      const max = colors.length - 1;
+      let i = randomIntegerFromInterval(min, max);
+      refs.body.style.backgroundColor = colors[i];
+    }, 800);
+  },
+  stop() {
+    clearInterval(this.swichColors);
+    this.isActive = false;
+  },
+};
+refs.startBtn.addEventListener("click", colorSwitch.start.bind(colorSwitch));
+refs.stopBtn.addEventListener("click", colorSwitch.stop.bind(colorSwitch));
