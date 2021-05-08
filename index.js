@@ -28,7 +28,7 @@ const colorSwitch = {
       const max = colors.length - 1;
       let i = randomIntegerFromInterval(min, max);
       refs.body.style.backgroundColor = colors[i];
-    }, 800);
+    }, 1000);
   },
   stop() {
     clearInterval(this.swichColors);
